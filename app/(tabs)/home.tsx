@@ -1,9 +1,17 @@
 import { StyleSheet, Text, View, FlatList } from 'react-native'
-import React from 'react'
-import { Link } from 'expo-router';
-
+import React, { useCallback, useState } from 'react'
+import { Link, useFocusEffect } from 'expo-router';
+import AsyncStorage from '@react-native-async-storage/async-storage'
 const Home = () => {
-    const contacts = [{ "name": "Jason Bourne", "phone": "1234567890", "email": "example@examplemail.com" }, { "name": "Jason Bourne", "phone": "1234567890", "email": "example@examplemail.com" }, { "name": "Jason Bourne", "phone": "1234567890", "email": "example@examplemail.com" }, { "name": "Jason Bourne", "phone": "1234567890", "email": "example@examplemail.com" }, { "name": "Jason Bourne", "phone": "1234567890", "email": "example@examplemail.com" }, { "name": "Jason Bourne", "phone": "1234567890", "email": "example@examplemail.com" }, { "name": "Jason Bourne", "phone": "1234567890", "email": "example@examplemail.com" }, { "name": "Jason Bourne", "phone": "1234567890", "email": "example@examplemail.com" }, { "name": "Jason Bourne", "phone": "1234567890", "email": "example@examplemail.com" }];
+    const [contacts, setContacts] = useState([]);
+    useFocusEffect(useCallback(() => {
+        AsyncStorage.getItem('contacts')
+            .then((existingContactString) => {
+                if (existingContactString) {
+                    setContacts(JSON.parse(existingContactString))
+                }
+            });
+    }, []));
     const renderItem = ({ item }) => (
         <View style={mystyles.contactItem}>
             <Text style={mystyles.contactName}>{item.name}</Text>
