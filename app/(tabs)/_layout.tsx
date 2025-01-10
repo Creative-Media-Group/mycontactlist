@@ -6,11 +6,13 @@ const TabsLayout = () => {
     return (
         <Tabs>
             <Tabs.Screen name="home" options={{
+                tabBarLabel: "Home",
                 tabBarIcon: ({ color, size }) => (
                     <Ionicons name='home' color={color} size={size}></Ionicons>
                 ),
             }}></Tabs.Screen>
             <Tabs.Screen name='add' options={{
+                tabBarLabel: "Add",
                 tabBarIcon: ({ color, size }) => (
                     <Ionicons name='add' color={color} size={size}></Ionicons>
                 ),
