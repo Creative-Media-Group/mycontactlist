@@ -15,12 +15,13 @@ const TabsLayout = () => {
                 tabBarLabel: "Add",
                 tabBarIcon: ({ color, size }) => (
                     <Ionicons name='add' color={color} size={size}></Ionicons>
-                ),
+                ), headerTitle: "Add"
             }}></Tabs.Screen>
             <Tabs.Screen name='profile' options={{
+                tabBarLabel: "Profile",
                 tabBarIcon: ({ color, size }) => (
                     <Ionicons name='person' color={color} size={size}></Ionicons>
-                ),
+                ), headerTitle: "Profile"
             }}></Tabs.Screen>
         </Tabs>
     )
