@@ -8,7 +8,8 @@
     "scheme": "mycontactlist",
     "userInterfaceStyle": "automatic",
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "de.cmg.mycontactslist"
     },
     "android": {
       "adaptiveIcon": {

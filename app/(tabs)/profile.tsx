@@ -1,10 +1,10 @@
-import {StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import { StyleSheet, Text } from 'react-native'
+import { Host } from '@expo/ui'
 const Profile = () => {
     return (
-        <View>
+        <Host>
             <Text>Profile</Text>
-        </View>
+        </Host>
     )
 }
 

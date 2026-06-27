@@ -1,29 +1,21 @@
-import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
-import { Tabs } from 'expo-router'
-import { Ionicons } from '@expo/vector-icons'
+import { StyleSheet } from 'react-native'
 import { NativeTabs } from 'expo-router/build/native-tabs'
 const TabsLayout = () => {
     return (
-        <NativeTabs>
-            <NativeTabs.Trigger name="home" options={{
-                tabBarLabel: "Home",
-                tabBarIcon: ({ color, size }) => (
-                    <Ionicons name='home' color={color} size={size}></Ionicons>
-                ),
-            }}></NativeTabs.Trigger>
-            <NativeTabs.Trigger name='add' options={{
-                tabBarLabel: "Add",
-                tabBarIcon: ({ color, size }) => (
-                    <Ionicons name='add' color={color} size={size}></Ionicons>
-                ), headerTitle: "Add"
-            }}></NativeTabs.Trigger>
-            <NativeTabs.Trigger name='profile' options={{
-                tabBarLabel: "Profile",
-                tabBarIcon: ({ color, size }) => (
-                    <Ionicons name='person' color={color} size={size}></Ionicons>
-                ), headerTitle: "Profile"
-            }}></NativeTabs.Trigger>
+        <NativeTabs
+            blurEffect='systemDefault'>
+            <NativeTabs.Trigger name="home">
+                <NativeTabs.Trigger.Label>Home</NativeTabs.Trigger.Label>
+                <NativeTabs.Trigger.Icon sf={{ default: "house", selected: "house.fill" }} md={{ default: "home", selected: "home_filled" }} />
+            </NativeTabs.Trigger>
+            <NativeTabs.Trigger name='add'>
+                <NativeTabs.Trigger.Label>Add</NativeTabs.Trigger.Label>
+                <NativeTabs.Trigger.Icon sf={"plus"} md={"add"} />
+            </NativeTabs.Trigger>
+            <NativeTabs.Trigger name='profile' >
+                <NativeTabs.Trigger.Icon sf={"person"} md={"person"} />
+                <NativeTabs.Trigger.Label>Profile</NativeTabs.Trigger.Label>
+            </NativeTabs.Trigger>
         </NativeTabs>
     )
 }

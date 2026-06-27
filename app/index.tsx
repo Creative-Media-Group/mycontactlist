@@ -1,13 +1,13 @@
-import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import { StyleSheet } from 'react-native'
 import { Link } from 'expo-router'
+import { Host, Text } from '@expo/ui'
 
 const Index = () => {
     return (
-        <View style={mystyles.container}>
-            <Text style={mystyles.headline}>Hello World</Text>
+        <Host matchContents style={mystyles.container}>
+            <Text textStyle={mystyles.headline}>Hello World</Text>
             <Link href="/(tabs)/home" style={mystyles.newlink}>Open Profile</Link>
-        </View>
+        </Host>
     )
 }
 

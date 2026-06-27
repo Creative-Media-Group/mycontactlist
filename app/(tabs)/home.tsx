@@ -1,8 +1,11 @@
-import { StyleSheet, Text, View, FlatList } from 'react-native'
-import React, { useCallback, useState } from 'react'
+import { StyleSheet, View, FlatList } from 'react-native'
+import { useCallback, useState } from 'react'
 import { Link, useFocusEffect } from 'expo-router';
 import AsyncStorage from '@react-native-async-storage/async-storage'
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { Host, Text } from "@expo/ui"
 const Home = () => {
+    const insets = useSafeAreaInsets();
     const [contacts, setContacts] = useState([]);
     useFocusEffect(useCallback(() => {
         AsyncStorage.getItem('contacts')
@@ -13,17 +16,17 @@ const Home = () => {
             });
     }, []));
     const renderItem = ({ item }) => (
-        <View style={mystyles.contactItem}>
-            <Text style={mystyles.contactName}>{item.name}</Text>
+        <Host style={mystyles.contactItem}>
+            <Text textStyle={mystyles.contactName}>{item.name}</Text>
             <Link style={mystyles.contactRest} href={`tel:${item.phone}`}>{item.phone}</Link>
             <Link style={mystyles.contactRest} href={`mailto:${item.email}`}>{item.email}</Link>
-        </View>
+        </Host>
     );
     return (
-        <View>
-            <Text style={mystyles.title}>Home</Text>
-            <FlatList data={contacts} renderItem={renderItem} keyExtractor={(item, index) => index.toString()}></FlatList>
-        </View>
+        <Host style={{ flex: 1, paddingTop: insets.top }}>
+            <Text textStyle={mystyles.title}>Home</Text>
+            <FlatList style={{ flex: 1 }} data={contacts} renderItem={renderItem} keyExtractor={(item, index) => index.toString()}></FlatList>
+        </Host>
     )
 }
 

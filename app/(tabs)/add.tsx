@@ -1,6 +1,7 @@
-import { StyleSheet, Text, View, TextInput, Button, Alert } from 'react-native'
-import React, { useState } from 'react'
+import { StyleSheet, Alert } from 'react-native'
+import { useState } from 'react'
 import AsyncStorage from '@react-native-async-storage/async-storage'
+import { Host, Text, TextInput, Button } from '@expo/ui';
 const Add = () => {
     const [name, setName] = useState("");
     const [phone, setPhone] = useState("");
@@ -9,9 +10,9 @@ const Add = () => {
         if (name && phone && email) {
             const contact = { name, phone, email };
             const existingContactString = await AsyncStorage.getItem('contacts');
-            let contacts=[];
-            if(existingContactString) {
-                contacts=JSON.parse(existingContactString);
+            let contacts = [];
+            if (existingContactString) {
+                contacts = JSON.parse(existingContactString);
             }
             contacts.push(contact);
             await AsyncStorage.setItem('contacts', JSON.stringify(contacts));
@@ -25,16 +26,16 @@ const Add = () => {
         }
     };
     return (
-        <View style={mystyles.container}>
-            <Text style={mystyles.title}>Add contact</Text>
+        <Host style={mystyles.container}>
+            <Text textStyle={mystyles.title}>Add contact</Text>
             <Text>Name</Text>
             <TextInput placeholder='Name' style={mystyles.input} value={name} onChangeText={setName}></TextInput>
             <Text>Phonenumber</Text>
             <TextInput placeholder='Phonenumber' style={mystyles.input} value={phone} onChangeText={setPhone}></TextInput>
             <Text>E-Mailaddress</Text>
             <TextInput placeholder='E-Mailaddress' style={mystyles.input} value={email} onChangeText={setEmail}></TextInput>
-            <Button title='Add contact' onPress={handleSubmit}></Button>
-        </View>
+            <Button label='Add contact' onPress={handleSubmit}></Button>
+        </Host>
     )
 }
 
