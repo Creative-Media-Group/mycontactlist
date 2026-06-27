@@ -2,28 +2,29 @@ import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import { Tabs } from 'expo-router'
 import { Ionicons } from '@expo/vector-icons'
+import { NativeTabs } from 'expo-router/build/native-tabs'
 const TabsLayout = () => {
     return (
-        <Tabs>
-            <Tabs.Screen name="home" options={{
+        <NativeTabs>
+            <NativeTabs.Trigger name="home" options={{
                 tabBarLabel: "Home",
                 tabBarIcon: ({ color, size }) => (
                     <Ionicons name='home' color={color} size={size}></Ionicons>
                 ),
-            }}></Tabs.Screen>
-            <Tabs.Screen name='add' options={{
+            }}></NativeTabs.Trigger>
+            <NativeTabs.Trigger name='add' options={{
                 tabBarLabel: "Add",
                 tabBarIcon: ({ color, size }) => (
                     <Ionicons name='add' color={color} size={size}></Ionicons>
                 ), headerTitle: "Add"
-            }}></Tabs.Screen>
-            <Tabs.Screen name='profile' options={{
+            }}></NativeTabs.Trigger>
+            <NativeTabs.Trigger name='profile' options={{
                 tabBarLabel: "Profile",
                 tabBarIcon: ({ color, size }) => (
                     <Ionicons name='person' color={color} size={size}></Ionicons>
                 ), headerTitle: "Profile"
-            }}></Tabs.Screen>
-        </Tabs>
+            }}></NativeTabs.Trigger>
+        </NativeTabs>
     )
 }
 
