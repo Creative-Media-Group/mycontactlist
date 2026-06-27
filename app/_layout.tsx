@@ -1,12 +1,16 @@
 import React from 'react'
-import { Stack } from 'expo-router'
+import { Stack, ThemeProvider, useTheme, DefaultTheme } from 'expo-router'
 import { StyleSheet } from "react-native"
+import { ThemeContext } from 'expo-router/build/react-navigation';
 const RootLayout = () => {
+    const theme = useTheme();
     return (
-        <Stack>
-            <Stack.Screen name='index' options={{ headerShown: false }}></Stack.Screen>
-            <Stack.Screen name='(tabs)' options={{ headerShown: false }}></Stack.Screen>
-        </Stack>
+        <ThemeProvider value={DefaultTheme ? ""}>
+            <Stack>
+                <Stack.Screen name='index' options={{ headerShown: false }}></Stack.Screen>
+                <Stack.Screen name='(tabs)' options={{ headerShown: false }}></Stack.Screen>
+            </Stack>
+        </ThemeProvider>
     )
 }
 
