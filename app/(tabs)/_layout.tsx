@@ -8,7 +8,7 @@ const TabsLayout = () => {
                 <NativeTabs.Trigger.Label>Home</NativeTabs.Trigger.Label>
                 <NativeTabs.Trigger.Icon sf={{ default: "house", selected: "house.fill" }} md={{ default: "home", selected: "home_filled" }} />
             </NativeTabs.Trigger>
-            <NativeTabs.Trigger name='add'>
+            <NativeTabs.Trigger name='add' role='search'>
                 <NativeTabs.Trigger.Label>Add</NativeTabs.Trigger.Label>
                 <NativeTabs.Trigger.Icon sf={"plus"} md={"add"} />
             </NativeTabs.Trigger>

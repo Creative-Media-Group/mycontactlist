@@ -1,11 +1,9 @@
-import React from 'react'
-import { Stack, ThemeProvider, useTheme, DefaultTheme } from 'expo-router'
-import { StyleSheet } from "react-native"
-import { ThemeContext } from 'expo-router/build/react-navigation';
+import { Stack, ThemeProvider, useTheme, DefaultTheme, DarkTheme } from 'expo-router'
+import { StyleSheet, useColorScheme } from "react-native"
 const RootLayout = () => {
-    const theme = useTheme();
+    const colorSheme = useColorScheme();
     return (
-        <ThemeProvider value={DefaultTheme ? ""}>
+        <ThemeProvider value={colorSheme === "dark" ? DarkTheme : DefaultTheme}>
             <Stack>
                 <Stack.Screen name='index' options={{ headerShown: false }}></Stack.Screen>
                 <Stack.Screen name='(tabs)' options={{ headerShown: false }}></Stack.Screen>
@@ -15,15 +13,3 @@ const RootLayout = () => {
 }
 
 export default RootLayout
-const mystyles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: "green",
-        alignItems: "center",
-        justifyContent: "center",
-    },
-    headline: {
-        fontSize: 30
-    },
-    newlink: { color: "blue", marginTop: 20, fontSize: 20 }
-})
